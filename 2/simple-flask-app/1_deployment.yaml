@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-flask-app-deployment
+  name: simple-flask-app
 spec:
   replicas: 1
   selector:
@@ -11,8 +11,9 @@ spec:
     metadata:
       labels:
         app: simple-flask-app
-    containers:
-      - name: simple-flask-app
-        image: yogen48/simple-flask-app
-        ports:
-          - containerPort: 8083
+    spec:
+      containers:
+        - name: simple-flask-app
+          image: yogen48/simple-flask-app
+          ports:
+            - containerPort: 8083
