@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-flask-app-service
+spec:
+  selector:
+    app: simple-flask-app
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 9999
+      targetPort: 8083
