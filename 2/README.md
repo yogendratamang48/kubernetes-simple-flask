@@ -56,10 +56,20 @@ spec:
       targetPort: 8083
 ```
 
+### simple commands
+
+- Deploy applications
+- Make sure you are in folder `2`
+  > `kubectl apply -f simple-flask-app/`
+- Command commands
+  > `kubectl get pods` [List all pods]  
+  > `kubectl get services` [List all services]  
+  > `kubectl get deployments` [List all deployments]
+
 ### Access Application
 
 - Portforwarding your service to your host. [Host Machine PORT:Service PORT]
   > `kubectl port-forward svc/simple-flask-app 8888:9999`
 - Browse `http://localhost:8888`  
-OR 
->`curl localhost:8888`
+  OR
+  > `curl localhost:8888`
