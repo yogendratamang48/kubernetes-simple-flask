@@ -9,7 +9,6 @@
 #### Deployment
 
 - makes sure pods are running (achieves desired state)
-- replicas: 2
 
 #### Service
 
@@ -56,3 +55,11 @@ spec:
       port: 9999
       targetPort: 8083
 ```
+
+### Access Application
+
+- Portforwarding your service to your host. [Host Machine PORT:Service PORT]
+  > `kubectl port-forward svc/simple-flask-app 8888:9999`
+- Browse `http://localhost:8888`  
+OR 
+>`curl localhost:8888`
