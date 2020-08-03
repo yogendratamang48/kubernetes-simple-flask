@@ -1,9 +1,28 @@
-from flask import Flask
+from flask import Flask, jsonify
 app = Flask(__name__)
+
+country_list = [
+    'Nepal',
+    'India',
+    'Germany',
+    'Netherlands',
+    'Turkey',
+]
 
 @app.route('/')
 def index():
-    return 'Welcome to Flask App'
+    response_dict = {
+        "message": "Welcome to FlaskApp"
+    }
+    return jsonify(response_dict)
+
+@app.route('/names')
+def countries():
+    country_dict = {
+        'countries': country_list,
+        'total': len(country_list)
+    }
+    return jsonify(country_dict)
 
 
 if __name__ == '__main__':

@@ -18,7 +18,7 @@ docker login
 docker buit -t simple-flask-app .
 
 # docker tag and push
-docker tag simple-flask-app yogen48/simple-flask-app
+docker tag simple-flask-app yogen48/simple-flask-app:hello
 docker push yogen48/simple-flask-app
 
 # list running docker
