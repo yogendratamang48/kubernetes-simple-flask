@@ -1,0 +1,26 @@
+** Docker --  One Service
+** A Application [ DockerA1 - DockerA2 - DockerA3 ] 
+**** A1: Authorization : DockerA1
+**** A2: List of employee: DockerA2
+**** A3: Leave approve: DokcerA3
+
+
+*** How to make K8s run ?
+--> Write configuration (yaml files)
+-- Cluster --> Conf. 
+-> A1: image: DockerA1, replica: 3, cpu, memory, --> a1.yaml
+-> A2: image: DockerA2, cpu, memory: 2048M, --> a2.yaml
+-> A3: image: DockerA3, cpu, memory, --> a3.yaml
+
+*** Kubernetes:
+Types
+1. Pod: basic unit of deployment
+2. Deployment: controls pod, you can specify how many pods you want to run
+3. Service: A1-Service
+
+
+*** Deploy applications
+>`kubectl apply -f 2/`
+
+*** Interaction
+-Service level : A1
