@@ -2,11 +2,11 @@
 
 ### Instructions
 
-- Follow Video
-- Install Flask, Gunicorn
-- Write Simple app
-- Create Dockerfile
-- Pushing to DockerHub
+-   Follow Video
+-   Install Flask, Gunicorn
+-   Write Simple app
+-   Create Dockerfile
+-   Pushing to DockerHub
 
 ### Simple Commands
 
@@ -15,7 +15,7 @@
 docker login
 
 # build image
-docker buit -t simple-flask-app .
+docker buid -t simple-flask-app .
 
 # docker tag and push
 docker tag simple-flask-app yogen48/simple-flask-app:hello

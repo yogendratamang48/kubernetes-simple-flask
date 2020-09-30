@@ -16,6 +16,13 @@ def index():
     }
     return jsonify(response_dict)
 
+@app.route('/notfound')
+def not_found():
+    response_dict = {
+        "message": "Not found"
+    }
+    return jsonify(response_dict), 404
+
 @app.route('/names')
 def countries():
     country_dict = {
