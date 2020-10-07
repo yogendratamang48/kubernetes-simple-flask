@@ -11,6 +11,36 @@
 
 ### Installations
 
+### GitHub Action Integration
+
+- Add `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in Repository Secrets
+- GitHub Action is added with following setup (`.github/workflows/ci.yml`)
+
+```yaml
+name: ci
+
+on:
+  push:
+    branches: master
+
+jobs:
+  multi:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Setup script
+        run: chmod +x 1/to_dockerhub.sh
+      - name: Build and Push to ECR
+        run: ./1/to_dockerhub.sh
+```
+
 #### Install Kubernetes:
 
 I used kubernetes in my ubuntu 18.04 machine. Followed following steps
