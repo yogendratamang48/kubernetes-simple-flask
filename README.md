@@ -21,6 +21,10 @@ name: ci
 
 on:
   push:
+    paths-ignore:
+      - '*.md'
+      - '1/*.md'
+      - '2/**'
     branches: master
 
 jobs:
