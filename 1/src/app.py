@@ -12,7 +12,7 @@ country_list = [
 @app.route('/')
 def index():
     response_dict = {
-        "message": "Welcome to FlaskApp"
+        "message": "Welcome to FlaskApp with CI"
     }
     return jsonify(response_dict)
 
