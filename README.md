@@ -15,6 +15,7 @@
 
 - Add `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in Repository Secrets
 - GitHub Action is added with following setup (`.github/workflows/ci.yml`)
+- Each Push to master will update docker image.
 
 ```yaml
 name: ci
