@@ -17,10 +17,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Setup script
-        uses: docker/build-push-action@v2
-        with:
-          context: '1'
-          file: ./Dockerfile
-          push: true
-          tags: |
-            yogen48/simple-flask-app:latest
+        run: chmod +x 1/to_dockerhub.sh
+      - name: Build and Push to ECR
+        run: ./1/to_dockerhub.sh
