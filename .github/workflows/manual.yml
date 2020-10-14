@@ -1,4 +1,4 @@
-name: manual-workflow
+name: Deploy to pre-release environments
 
 on: 
   workflow_dispatch:
