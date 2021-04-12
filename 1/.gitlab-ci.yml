@@ -3,14 +3,24 @@ stages:
   - test
   - deploy
 
+variables:
+  SOURCE_REGISTRY: "registry.gitlab.com/nepalclass/docker-sample:1.0.0"
+  TARGET_REGISTRY: "registry.gitlab.com/nepalclass/docker-sample:1.0.0-dev"
 build_app:
-  stage: build
-  script:
-    - echo "Build Phase"
-
+    stage: build
+    image:
+        name: gcr.io/kaniko-project/executor:debug
+        entrypoint: [""]
+    script:
+        - echo $CI_REGISTRY
+        - echo $CI_REGISTRY_IMAGE
+        - mkdir -p /kaniko/.docker
+        - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\"\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+        - echo "FROM ${SOURCE_REGISTRY}" | /kaniko/executor --dockerfile /dev/stdin --destination "${TARGET_REGISTRY}"
+        
 test_app:
-  stage: test
-  script:
+    stage: test
+    script:
     - echo "Test Phase"
 
 deploy_app:

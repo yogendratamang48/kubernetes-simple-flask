@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import os
 app = Flask(__name__)
 
 country_list = [
@@ -8,6 +9,19 @@ country_list = [
     'Netherlands',
     'Turkey',
 ]
+
+@app.route('/checkdb')
+def get_credentials():
+    """test function to read database
+    """
+    db_user = os.environ.get('DB_USER')
+    db_pass = os.environ.get('DB_PASS')
+    if db_user == "admin" and db_pass == "password":
+        response_dict = {"message": "User and Password match"}
+        return jsonify(response_dict), 200
+    else: 
+        response_dict = {"message": "ERROR: User and Password do not match"}
+        return jsonify(response_dict), 200
 
 @app.route('/')
 def index():
