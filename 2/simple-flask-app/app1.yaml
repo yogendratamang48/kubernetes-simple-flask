@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+        - name: app1
+          image: yogen48/simple-flask-app:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8083
+            initialDelaySeconds: 30
+            failureThreshold: 2
+            periodSeconds: 10
+          ports:
+            - containerPort: 8083
+          env:
+            - name: APP_MESSAGE
+              value: "This is App1"
+            - name: FRIEND_SERVICE_NAME
+              value: "http://app2-svc/info"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-svc
+spec:
+  selector:
+    app: app1
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8083

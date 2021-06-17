@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app2
+  template:
+    metadata:
+      labels:
+        app: app2
+    spec:
+      containers:
+        - name: app2
+          image: yogen48/simple-flask-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: APP_MESSAGE
+              value: "This is app2"
+            - name: FRIEND_SERVICE_NAME
+              value: "http://app1-svc/info"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app2-svc
+spec:
+  selector:
+    app: app2
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8083
