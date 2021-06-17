@@ -1,8 +1,5 @@
 # Kuberenetes - Flask Series
 
-### Videos
-
-- YouTube Link: https://www.youtube.com/watch?v=25gr54QEkSU
 
 ## Outline
 
